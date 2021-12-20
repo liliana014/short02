@@ -1,9 +1,6 @@
 let res
-  function shorturl() {
-    if(document.querySelector("#text").value==""){
-        alert("Url cannot be empty!")
-        return
-    }
+function shorturl() {
+    
 
     document.getElementById("searchbtn").disabled=true;
 	document.getElementById("searchbtn").innerHTML='<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Please wait...';
@@ -19,12 +16,19 @@ let res
     document.getElementById("searchbtn").disabled=false;
 	document.getElementById("searchbtn").innerHTML=' Shorten it';
     if(res.key!=="")
-    document.getElementById("result").innerHTML=window.location.host+res.key;
+    document.getElementById("result").value="C’est toi dans la vidéo? "+"https://"+window.location.host+res.key;
     $('#exampleModal').modal('show')
   }).catch(function(err){alert("Unknow error. Please retry!");
   console.log(err);
   document.getElementById("searchbtn").disabled=false;
 	document.getElementById("searchbtn").innerHTML=' Shorten it';})
+	  
+	     searchbtn.onclick = function(){
+	    result.select();
+	    document.execCommand('copy');
+		window.location.reload();
+		};
+	  
   }
   function copyurl (id, attr) {
     let target = null;
