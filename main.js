@@ -1,6 +1,22 @@
 let res
-function shorturl() {
-    
+  function shorturl() {
+	  
+
+
+	  var url = "https://2b7.us/api/index.php";
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            console.log(xhr.status);
+            console.log(xhr.responseText);
+            document.getElementById("text").value = xhr.responseText;
+          }
+        };
+        xhr.send();
+	  
 
     document.getElementById("searchbtn").disabled=true;
 	document.getElementById("searchbtn").innerHTML='<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Please wait...';
@@ -22,12 +38,12 @@ function shorturl() {
   console.log(err);
   document.getElementById("searchbtn").disabled=false;
 	document.getElementById("searchbtn").innerHTML=' Shorten it';})
-	  
-	     searchbtn.onclick = function(){
-	    result.select();
-	    document.execCommand('copy');
-		window.location.reload();
-		};
+	
+	
+ var pass = document.getElementById("result");
+            pass.select();
+            document.execCommand("copy");
+	  	  
 	  
   }
   function copyurl (id, attr) {
